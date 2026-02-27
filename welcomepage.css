@@ -1,0 +1,10 @@
+body{
+    background-color: hsl(200, 26%, 75%);
+}
+.page{ background-color: hsl(200, 70%, 90%);
+border: solid green 1px;
+margin: 7% 38%;
+border-radius: 30%;
+padding: 3%;
+text-align: center;
+}
