@@ -11,73 +11,270 @@ text-align: center;
       widith: 100vm
 }
 
+/* =============================================
+   welcomepage.css
+   Humanity Institute of Information Technology
+   Responsive stylesheet — layout only
+   ============================================= */
 
-    /* =============================================
-       RESPONSIVE BREAKPOINTS
-       ============================================= */
+/* ---------- Reset & base ---------- */
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
 
-    /* ── Tablet: ≤ 900px ── */
-    @media (max-width: 900px) {
-      :root { --space-lg: 3rem; --space-xl: 5rem; }
+html {
+    font-size: 16px;
+}
 
-      .footer__grid {
-        grid-template-columns: 1fr 1fr;
-        gap: var(--space-md) var(--space-sm);
-      }
-      .footer__brand { grid-column: 1 / -1; }
+body {
+    font-family: Georgia, "Times New Roman", serif;
+    background-color: #f4f4f4;
+    color: #222;
+    min-height: 100vh;
+    padding: 1rem;
+}
+
+/* ---------- Page wrapper ---------- */
+.page {
+    width: 100%;
+    max-width: 960px;
+    margin: 0 auto;
+    background: #fff;
+    padding: 1.5rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+/* ---------- Headings ---------- */
+h1 {
+    font-size: clamp(1.2rem, 4vw, 2rem);
+    text-align: center;
+    margin-bottom: 0.5rem;
+    word-break: break-word;
+}
+
+h1 b {
+    font-size: inherit;
+}
+
+/* ---------- Intro text div ---------- */
+.page > div {
+    text-align: center;
+    font-size: clamp(0.85rem, 2.5vw, 1rem);
+    margin-bottom: 1rem;
+    word-break: break-word;
+}
+
+/* ---------- Form ---------- */
+form {
+    width: 100%;
+    max-width: 480px;
+    margin: 0 auto 1.5rem auto;
+}
+
+fieldset {
+    width: 100%;
+    padding: 1rem;
+    border: 1px solid #999;
+    border-radius: 4px;
+}
+
+legend {
+    padding: 0 0.4rem;
+    font-weight: bold;
+    font-size: clamp(0.85rem, 2vw, 1rem);
+}
+
+label {
+    display: block;
+    margin-top: 0.75rem;
+    font-size: clamp(0.85rem, 2vw, 1rem);
+}
+
+input[type="text"],
+input[type="password"] {
+    width: 100%;
+    padding: 0.5rem 0.6rem;
+    font-size: clamp(0.85rem, 2vw, 1rem);
+    border: 1px solid #aaa;
+    border-radius: 3px;
+    margin-top: 0.25rem;
+}
+
+.submit {
+    display: block;
+    text-align: center;
+    margin-top: 1rem;
+}
+
+input[type="submit"] {
+    padding: 0.5rem 2rem;
+    font-size: clamp(0.85rem, 2vw, 1rem);
+    cursor: pointer;
+    border: 1px solid #555;
+    border-radius: 3px;
+    background-color: #3a5fa0;
+    color: #fff;
+    width: 100%;
+    max-width: 200px;
+}
+
+input[type="submit"]:hover {
+    background-color: #2d4c84;
+}
+
+/* ---------- Lists ---------- */
+ul, ol {
+    padding-left: 1.5rem;
+    margin-bottom: 1rem;
+    font-size: clamp(0.85rem, 2vw, 1rem);
+}
+
+li {
+    margin-bottom: 0.3rem;
+    line-height: 1.6;
+}
+
+/* ---------- Table ---------- */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 1.5rem;
+    font-size: clamp(0.75rem, 2vw, 1rem);
+}
+
+/* Wrap table so it scrolls horizontally on very small screens */
+table {
+    display: table; /* kept as table for colspan/rowspan to work */
+    overflow-x: auto;
+}
+
+/* Outer scroll container — applied via the existing markup's parent */
+.page {
+    overflow-x: auto; /* allows table to scroll if viewport is very narrow */
+}
+
+th, td {
+    border: 1px solid #555;
+    padding: 0.5rem 0.6rem;
+    text-align: center;
+    word-break: break-word;
+}
+
+th {
+    background-color: #3a5fa0;
+    color: #fff;
+    font-size: clamp(0.8rem, 2vw, 1rem);
+}
+
+/* ---------- Footer ---------- */
+footer {
+    text-align: center;
+    font-size: clamp(0.75rem, 2vw, 0.9rem);
+    color: #555;
+    padding-top: 1rem;
+    border-top: 1px solid #ddd;
+    margin-top: 1rem;
+}
+
+/* =============================================
+   RESPONSIVE BREAKPOINTS
+   ============================================= */
+
+/* --- Tablet (max 768px) --- */
+@media (max-width: 768px) {
+    body {
+        padding: 0.5rem;
     }
 
-    /* ── Mobile: ≤ 640px ── */
-    @media (max-width: 640px) {
-      :root { --space-lg: 2.5rem; --space-xl: 4rem; }
-
-      /* Nav becomes hamburger */
-      .nav__toggle { display: flex; }
-
-      .nav__links {
-        position: fixed;
-        inset: 0 0 0 30%;
-        background: rgba(10, 10, 18, 0.96);
-        backdrop-filter: blur(24px);
-        flex-direction: column;
-        align-items: flex-start;
-        padding: 6rem var(--space-md) var(--space-md);
-        gap: 1.5rem;
-        transform: translateX(100%);
-        transition: transform 0.4s var(--ease);
-        border-left: 1px solid rgba(255,255,255,0.08);
-      }
-
-      .nav__links.is-open { transform: translateX(0); }
-
-      .nav__links a { font-size: 1.2rem; }
-
-      .cards { grid-template-columns: 1fr; }
-
-      .footer__grid { grid-template-columns: 1fr; }
-      .footer__brand { grid-column: auto; }
-
-      .footer__bottom { flex-direction: column; text-align: center; }
-
-      .hero__title { letter-spacing: -0.02em; }
+    .page {
+        padding: 1rem;
     }
 
-    /* ── Wide screens: ≥ 1400px ── */
-    @media (min-width: 1400px) {
-      :root { --space-lg: 6rem; }
-      .cards { grid-template-columns: repeat(3, 1fr); }
+    form {
+        max-width: 100%;
     }
 
-    /* ── Print ── */
-    @media print {
-      .nav, .hero::before, .hero::after, .cta-band::before { display: none; }
-      body { background: #fff; color: #111; }
+    input[type="submit"] {
+        max-width: 100%;
     }
 
-    /* ── Reduced Motion ── */
-    @media (prefers-reduced-motion: reduce) {
-      *, *::before, *::after {
-        animation-duration: 0.01ms !important;
-        transition-duration: 0.01ms !important;
-      }
+    table {
+        font-size: 0.8rem;
+    }
+
+    th, td {
+        padding: 0.4rem 0.3rem;
+    }
+}
+
+/* --- Mobile (max 480px) --- */
+@media (max-width: 480px) {
+    body {
+        padding: 0.25rem;
+    }
+
+    .page {
+        padding: 0.75rem;
+        border: none;
+        border-radius: 0;
+    }
+
+    h1 {
+        font-size: 1.1rem;
+    }
+
+    fieldset {
+        padding: 0.75rem 0.5rem;
+    }
+
+    input[type="text"],
+    input[type="password"] {
+        font-size: 0.9rem;
+    }
+
+    ul, ol {
+        padding-left: 1.1rem;
+    }
+
+    /* Make table scrollable on very small screens */
+    table {
+        display: block;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        white-space: nowrap;
+    }
+
+    th, td {
+        padding: 0.35rem 0.4rem;
+        font-size: 0.75rem;
+    }
+}
+
+/* --- Very small screens (max 360px) --- */
+@media (max-width: 360px) {
+    h1 {
+        font-size: 1rem;
+    }
+
+    .page {
+        padding: 0.5rem;
+    }
+
+    legend {
+        font-size: 0.8rem;
+    }
+
+    label,
+    input[type="text"],
+    input[type="password"],
+    input[type="submit"] {
+        font-size: 0.82rem;
+    }
+
+    li {
+        font-size: 0.82rem;
+    }
     }
